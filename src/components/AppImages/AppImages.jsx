@@ -2,14 +2,14 @@ import Loader from 'react-loader-spinner';
 import toast, { Toaster } from 'react-hot-toast';
 
 import { useState, useEffect } from 'react';
-import galleryApi, { PER_PAGE } from './services/galleryApi';
+import galleryApi, { PER_PAGE } from '../../services/galleryApi';
 
-import { Searchbar } from './components/Searchbar/Searchbar';
-import { ImageGallery } from './components/ImageGallery/ImageGallery';
-import { Button } from './components/Button/Button';
-import Modal from './components/Modal/Modal';
+import { Searchbar } from '../Searchbar/Searchbar';
+import { ImageGallery } from '../ImageGallery/ImageGallery';
+import { Button } from '../Button/Button';
+import Modal from '../Modal/Modal';
 
-import { WrapperLoader, MyApp } from './App.styled';
+import { WrapperLoader, MyApp } from './AppImages.styled';
 
 export default function App() {
   const [imagesList, setImagesList] = useState([]);
