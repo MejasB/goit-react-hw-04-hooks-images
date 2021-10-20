@@ -5,9 +5,9 @@ import { createPortal } from 'react-dom';
 
 import { Overlay, ImageModal } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#rootModal');
 
-export default function Modal({ alt, url, closeModal }) {
+export function Modal({ alt, url, closeModal }) {
   useEffect(() => {
     const handleKeyDown = e => {
       closeModal(e);

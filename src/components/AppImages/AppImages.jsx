@@ -4,14 +4,14 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useState, useEffect } from 'react';
 import galleryApi, { PER_PAGE } from '../../services/galleryApi';
 
-import { Searchbar } from '../Searchbar/Searchbar';
-import { ImageGallery } from '../ImageGallery/ImageGallery';
-import { Button } from '../Button/Button';
-import Modal from '../Modal/Modal';
-
 import { WrapperLoader, MyApp } from './AppImages.styled';
 
-export default function App() {
+import { Button } from '../Button/Button';
+import { ImageGallery } from '../ImageGallery/ImageGallery';
+import { Searchbar } from '../Searchbar/Searchbar';
+import { Modal } from '../Modal/Modal';
+
+export const App = () => {
   const [imagesList, setImagesList] = useState([]);
   const [searchQuery, setSearchQuery] = useState(null);
   const [numberPage, setNumberPage] = useState(1);
@@ -36,13 +36,7 @@ export default function App() {
         return;
       }
 
-      const images = data.map(({ id, webformatURL, largeImageURL }) => ({
-        id,
-        webformatURL,
-        largeImageURL,
-      }));
-
-      setImagesList(prev => [...prev, ...images]);
+      setImagesList(prev => [...prev, ...data]);
       setRequestStatus('resolved');
     });
   }, [numberPage, searchQuery]);
@@ -89,9 +83,9 @@ export default function App() {
   return (
     <MyApp>
       <Searchbar onSubmit={handleSubmit} />
-      {imagesList.length > 0 && (
+      {imagesList.length && (
         <ImageGallery
-          imagesList={imagesList}
+          images={imagesList}
           alt={searchQuery}
           handleClick={handleClickImages}
         />
@@ -110,4 +104,4 @@ export default function App() {
       <Toaster />
     </MyApp>
   );
-}
+};
